@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class MemberController extends Controller
 {
+    public function lazyload(Request $request)
+    {
+        // $employees = Employee::paginate(10);
+        if ($request->ajax()) {
+            $employees = Member::paginate(10);
+            return response()->json(['data' => $employees]);
+        }
+        return view('employee.lazyload');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-    	$posts = Post::paginate(20);
-
-
-    	if ($request->ajax()) {
-    		$view = view('data',compact('posts'))->render();
-            return response()->json(['html'=>$view]);
-        }
-
-
-    	return view('my-post',compact('posts'));
+        //
     }
 
     /**
@@ -50,10 +50,10 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Member $member)
     {
         //
     }
@@ -61,10 +61,10 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Member $member)
     {
         //
     }
@@ -73,10 +73,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Member $member)
     {
         //
     }
@@ -84,10 +84,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Member $member)
     {
         //
     }
