@@ -1,0 +1,3 @@
+More blog:
+https://www.positronx.io/laravel-auto-load-more-data-on-page-scroll-with-ajax/
+https://laracasts.com/discuss/channels/laravel/laravel-51-infinite-scroll-with-jquery-and-ajax
